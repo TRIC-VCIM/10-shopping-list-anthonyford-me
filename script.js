@@ -77,3 +77,5 @@ itemList.addEventListener('click', removeItem);
 itemClear.addEventListener('click', clearItems); 
 itemFilter.addEventListener('input', filterItems);
 checkUI();
+
+//second guessing myself here. (T_T)
