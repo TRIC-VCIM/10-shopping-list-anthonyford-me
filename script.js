@@ -32,7 +32,17 @@ function createButton(classes) {
     button.appendChild(icon);
     return button;
 }
+function filterItems(e) {
+    const filterText = e.target.value.toLowerCase();
+    const items = itemList.querySelectorAll('li');
 
+    items.forEach(item => {
+        const itemName = item.firstChild.textContent.toLowerCase();
+        if (itemName.includes(filterText)) {
+            item.style.display = 'flex'; // or 'block'
+        } else {
+            item.style.display = 'none';
+        }
 function createIcon(classes) {
     const icon = document.createElement('i');
     icon.className = classes;
@@ -49,6 +59,7 @@ function removeItem(e) {
     function itemClear() {
         while (itemList.firstChild) {
             itemList.removeChild(itemList.firstChild);
+        checkUI();
         }
 
 function checkUI () {
@@ -64,5 +75,5 @@ function checkUI () {
 itemForm.addEventListener('submit', addItem);
 itemList.addEventListener('click', removeItem);
 itemClear.addEventListener('click', clearItems); 
-
+itemFilter.addEventListener('input', filterItems);
 checkUI();
